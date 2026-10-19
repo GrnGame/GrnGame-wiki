@@ -1,0 +1,11 @@
+{
+  "title": "GrnGame-wiki",
+  "sections": [
+    { "title": "Installation and setup", "pages": [
+      { "title": "First installation", "file": "docs/first-installation.md" }
+    ]},
+    { "title": "Export my game", "pages": [
+      { "title": "Configuration", "file": "docs/export.md" }
+    ]}
+  ]
+}
