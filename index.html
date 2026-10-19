@@ -1,110 +1,355 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GrnGame-wiki</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
-<style>
-:root{--bg:#fff;--side:#f6f7f9;--text:#1f2328;--muted:#656d76;--border:#d8dce0;--accent:#2563eb;--code:#f0f2f5}
-:root[data-theme=dark]{--bg:#0f1115;--side:#161a20;--text:#e6e8eb;--muted:#9aa4af;--border:#2a303a;--accent:#6ea8ff;--code:#1d222a}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
-header{position:fixed;top:0;left:0;right:0;height:56px;display:flex;align-items:center;gap:12px;padding:0 16px;background:var(--bg);border-bottom:1px solid var(--border);z-index:10}
-header h1{font-size:18px;margin:0;flex:1}
-button{background:none;border:1px solid var(--border);color:var(--text);border-radius:8px;padding:6px 10px;cursor:pointer;font-size:15px}
-#burger{display:none}
-nav{position:fixed;top:56px;bottom:0;left:0;width:260px;overflow:auto;padding:16px;background:var(--side);border-right:1px solid var(--border)}
-nav h3{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:18px 0 6px}
-nav h3:first-child{margin-top:0}
-nav a{display:block;padding:5px 10px;border-radius:6px;color:var(--text);text-decoration:none;font-size:15px}
-nav a:hover{background:var(--code)}
-nav a.active{background:var(--accent);color:#fff}
-main{margin:56px 0 0 260px;padding:32px 24px 80px}
-article{max-width:760px;margin:0 auto}
-article h1{font-size:2em;margin-top:0}
-article h1,article h2{border-bottom:1px solid var(--border);padding-bottom:.3em}
-article a{color:var(--accent)}
-article code{background:var(--code);padding:.15em .4em;border-radius:5px;font-size:.9em}
-article pre{background:var(--code);padding:14px;border-radius:8px;overflow:auto}
-article pre code{background:none;padding:0}
-article img{max-width:100%}
-article blockquote{margin:0;padding:0 1em;color:var(--muted);border-left:4px solid var(--border)}
-article table{border-collapse:collapse;display:block;overflow:auto}
-article th,article td{border:1px solid var(--border);padding:6px 12px}
-.pager{display:flex;justify-content:space-between;margin-top:48px;gap:12px}
-.pager a{border:1px solid var(--border);border-radius:8px;padding:8px 14px;text-decoration:none;color:var(--accent)}
-@media(max-width:800px){
- #burger{display:block}
- nav{transform:translateX(-100%);transition:transform .2s;z-index:9}
- nav.open{transform:none}
- main{margin-left:0}
-}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GrnGame-wiki</title>
+  <link rel="icon" href="logo.svg">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+
+  <style>
+    :root {
+      --bg: #ffffff;
+      --sidebar: #f6f7f9;
+      --text: #1f2328;
+      --muted: #656d76;
+      --border: #d8dce0;
+      --accent: #2563eb;
+      --code-bg: #f0f2f5;
+    }
+
+    :root[data-theme="dark"] {
+      --bg: #0f1115;
+      --sidebar: #161a20;
+      --text: #e6e8eb;
+      --muted: #9aa4af;
+      --border: #2a303a;
+      --accent: #6ea8ff;
+      --code-bg: #1d222a;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 16px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 56px;
+      padding: 0 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      z-index: 10;
+    }
+
+    .brand {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .brand img {
+      height: 32px;
+      width: 32px;
+      border-radius: 8px;
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    button {
+      background: none;
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 6px 10px;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    #burger {
+      display: none;
+    }
+
+    nav {
+      position: fixed;
+      top: 56px;
+      bottom: 0;
+      left: 0;
+      width: 260px;
+      padding: 16px;
+      overflow: auto;
+      background: var(--sidebar);
+      border-right: 1px solid var(--border);
+    }
+
+    nav h3 {
+      margin: 18px 0 6px;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    nav h3:first-child {
+      margin-top: 0;
+    }
+
+    nav a {
+      display: block;
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-size: 15px;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      background: var(--code-bg);
+    }
+
+    nav a.active {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    main {
+      margin: 56px 0 0 260px;
+      padding: 32px 24px 80px;
+    }
+
+    article {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    article h1 {
+      margin-top: 0;
+      font-size: 2em;
+    }
+
+    article h1,
+    article h2 {
+      padding-bottom: 0.3em;
+      border-bottom: 1px solid var(--border);
+    }
+
+    article a {
+      color: var(--accent);
+    }
+
+    article code {
+      padding: 0.15em 0.4em;
+      border-radius: 5px;
+      background: var(--code-bg);
+      font-size: 0.9em;
+    }
+
+    article pre {
+      padding: 14px;
+      border-radius: 8px;
+      overflow: auto;
+      background: var(--code-bg);
+    }
+
+    article pre code {
+      padding: 0;
+      background: none;
+    }
+
+    article img {
+      max-width: 100%;
+    }
+
+    article blockquote {
+      margin: 0;
+      padding: 0 1em;
+      color: var(--muted);
+      border-left: 4px solid var(--border);
+    }
+
+    article table {
+      display: block;
+      overflow: auto;
+      border-collapse: collapse;
+    }
+
+    article th,
+    article td {
+      padding: 6px 12px;
+      border: 1px solid var(--border);
+    }
+
+    .pager {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 48px;
+    }
+
+    .pager a {
+      padding: 8px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    @media (max-width: 800px) {
+      #burger {
+        display: block;
+      }
+
+      nav {
+        transform: translateX(-100%);
+        transition: transform 0.2s;
+        z-index: 9;
+      }
+
+      nav.open {
+        transform: none;
+      }
+
+      main {
+        margin-left: 0;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<header>
-  <button id="burger" aria-label="Menu">☰</button>
-  <h1 id="title">GrnGame-wiki</h1>
-  <button id="theme" aria-label="Change theme">🌙</button>
-</header>
-<nav id="nav"></nav>
-<main><article id="content"></article></main>
+  <header>
+    <button id="burger" aria-label="Menu">☰</button>
 
-<script>
-const $ = s => document.querySelector(s);
-let pages = [];
+    <a class="brand" href="#">
+      <img src="logo.svg" alt="" onerror="this.remove()">
+      <h1 id="title">GrnGame-wiki</h1>
+    </a>
+
+    <button id="theme-toggle" aria-label="Change theme">🌙</button>
+  </header>
+
+  <nav id="menu"></nav>
+
+  <main>
+    <article id="content"></article>
+  </main>
+
+  <script>
+    const menu = document.querySelector("#menu");
+    const content = document.querySelector("#content");
+    const themeButton = document.querySelector("#theme-toggle");
+
+    let pages = [];
+
+    function applyTheme(theme) {
+      document.documentElement.dataset.theme = theme;
+      themeButton.textContent = theme === "dark" ? "☀️" : "🌙";
+      try { localStorage.setItem("theme", theme); } catch (e) {}
+    }
+
+    function getInitialTheme() {
+      let saved = null;
+      try { saved = localStorage.getItem("theme"); } catch (e) {}
+      if (saved) return saved;
+      return matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+
+    themeButton.onclick = () => {
+      const current = document.documentElement.dataset.theme;
+      applyTheme(current === "dark" ? "light" : "dark");
+    };
+
+    document.querySelector("#burger").onclick = () => menu.classList.toggle("open");
+
+    applyTheme(getInitialTheme());
 
 
-function setTheme(t){
-  document.documentElement.dataset.theme = t;
-  $('#theme').textContent = t === 'dark' ? '☀️' : '🌙';
-  try{ localStorage.setItem('theme', t) }catch(e){}
-}
-let saved; try{ saved = localStorage.getItem('theme') }catch(e){}
-setTheme(saved || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
-$('#theme').onclick = () => setTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark');
-$('#burger').onclick = () => $('#nav').classList.toggle('open');
+    function buildMenu(sections) {
+      menu.innerHTML = sections.map(section => {
+        const links = section.pages.map(page => {
+          pages.push(page);
+          return `<a href="#${page.file}">${page.title}</a>`;
+        });
+        return `<h3>${section.title}</h3>${links.join("")}`;
+      }).join("");
+    }
 
+    async function showPage() {
+      const file = decodeURIComponent(location.hash.slice(1)) || pages[0].file;
+      const index = pages.findIndex(page => page.file === file);
 
-async function init(){
-  const cfg = await (await fetch('docs.json')).json();
-  document.title = cfg.title;
-  $('#title').textContent = cfg.title;
-  $('#nav').innerHTML = cfg.sections.map(s =>
-    `<h3>${s.title}</h3>` + s.pages.map(p => { pages.push(p); return `<a href="#${p.file}">${p.title}</a>` }).join('')
-  ).join('');
-  addEventListener('hashchange', load);
-  load();
-}
+      try {
+        const response = await fetch(file);
+        if (!response.ok) throw new Error("not found");
+        content.innerHTML = marked.parse(await response.text());
+      } catch (e) {
+        content.innerHTML = "<h1>Page introuvable</h1>";
+      }
 
-async function load(){
-  const file = decodeURIComponent(location.hash.slice(1)) || pages[0].file;
-  const i = pages.findIndex(p => p.file === file);
-  let html;
-  try{
-    const r = await fetch(file);
-    if(!r.ok) throw 0;
-    html = marked.parse(await r.text());
-  }catch(e){ html = '<h1>Page introuvable</h1>' }
-  $('#content').innerHTML = html;
+      fixRelativeLinks(file);
+      addPager(index);
 
-  const base = new URL(file, document.baseURI);
-  const root = new URL('.', document.baseURI).href;
-  document.querySelectorAll('#content a[href$=".md"]').forEach(a => {
-    const u = new URL(a.getAttribute('href'), base);
-    a.href = '#' + u.href.replace(root, '');
-  });
+      menu.querySelectorAll("a").forEach(link => {
+        link.classList.toggle("active", link.getAttribute("href") === "#" + file);
+      });
 
-  const prev = pages[i-1], next = pages[i+1];
-  $('#content').insertAdjacentHTML('beforeend',
-    `<div class="pager"><span>${prev ? `<a href="#${prev.file}">← ${prev.title}</a>` : ''}</span><span>${next ? `<a href="#${next.file}">${next.title} →</a>` : ''}</span></div>`);
+      menu.classList.remove("open");
+      scrollTo(0, 0);
+    }
 
-  document.querySelectorAll('#nav a').forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + file));
-  $('#nav').classList.remove('open');
-  scrollTo(0, 0);
-}
-init();
-</script>
+    function fixRelativeLinks(currentFile) {
+      const currentUrl = new URL(currentFile, document.baseURI);
+      const siteRoot = new URL(".", document.baseURI).href;
+
+      content.querySelectorAll('a[href$=".md"]').forEach(link => {
+        const target = new URL(link.getAttribute("href"), currentUrl);
+        link.href = "#" + target.href.replace(siteRoot, "");
+      });
+    }
+
+    function addPager(index) {
+      const prev = pages[index - 1];
+      const next = pages[index + 1];
+
+      content.insertAdjacentHTML("beforeend", `
+        <div class="pager">
+          <span>${prev ? `<a href="#${prev.file}">← ${prev.title}</a>` : ""}</span>
+          <span>${next ? `<a href="#${next.file}">${next.title} →</a>` : ""}</span>
+        </div>
+      `);
+    }
+
+    async function start() {
+      const config = await (await fetch("docs.json")).json();
+
+      document.title = config.title;
+      document.querySelector("#title").textContent = config.title;
+
+      buildMenu(config.sections);
+      addEventListener("hashchange", showPage);
+      showPage();
+    }
+
+    start();
+  </script>
 </body>
 </html>
