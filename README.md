@@ -1,2 +1,3 @@
-# GrnGame-wiki
-GrnGame repository wiki
+# GrnGame wiki :
+
+https://grngame.github.io/GrnGame-wiki/
