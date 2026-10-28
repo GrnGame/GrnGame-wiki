@@ -1,5 +1,5 @@
 {
-  "title": "GrnGame-wiki",
+  "title": "GrnGame WIKI",
   "sections": [
     { "title": "Installation and setup", "pages": [
       { "title": "First installation", "file": "docs/first-installation.md" }

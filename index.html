@@ -3,28 +3,28 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>GrnGame-wiki</title>
+  <title>GrnGame WIKI</title>
   <link rel="icon" href="logo.svg">
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
 
   <style>
     :root {
-      --bg: #ffffff;
-      --sidebar: #f6f7f9;
-      --text: #1f2328;
-      --muted: #656d76;
-      --border: #d8dce0;
-      --accent: #2563eb;
+      --bg: #f6f7f9;
+      --sidebar: #f5f2f7;
+      --text: #000000;
+      --muted: #9aa4af;
+      --border: #464041;
+      --accent: #6ea8ff;
       --code-bg: #f0f2f5;
     }
 
     :root[data-theme="dark"] {
-      --bg: #0f1115;
+      --bg: #1a1f29;
       --sidebar: #161a20;
-      --text: #e6e8eb;
+      --text: #ffffff;
       --muted: #9aa4af;
-      --border: #2a303a;
+      --border: #3c424e;
       --accent: #6ea8ff;
       --code-bg: #1d222a;
     }
@@ -43,9 +43,9 @@
     header {
       position: fixed;
       top: 0;
-      left: 0;
+      left: 260px;
       right: 0;
-      height: 56px;
+      height: 64px;
       padding: 0 16px;
       display: flex;
       align-items: center;
@@ -59,20 +59,21 @@
       flex: 1;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 14px;
+      justify-content: center;
       color: inherit;
       text-decoration: none;
     }
 
     .brand img {
-      height: 32px;
-      width: 32px;
+      height: 48px;
+      width: 48px;
       border-radius: 8px;
     }
 
     .brand h1 {
       margin: 0;
-      font-size: 18px;
+      font-size: 24px;
     }
 
     button {
@@ -91,7 +92,7 @@
 
     nav {
       position: fixed;
-      top: 56px;
+      top: 0px;
       bottom: 0;
       left: 0;
       width: 260px;
@@ -241,7 +242,7 @@
 
     <a class="brand" href="#">
       <img src="logo.svg" alt="" onerror="this.remove()">
-      <h1 id="title">GrnGame-wiki</h1>
+      <h1 id="title">GrnGame WIKI</h1>
     </a>
 
     <button id="theme-toggle" aria-label="Change theme">🌙</button>

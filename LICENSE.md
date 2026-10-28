@@ -19,6 +19,6 @@ Full license text: https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
 ## 2. Website Source Code & Code Snippets (MIT License)
 The underlying source code of the website (HTML, JavaScript) and all example code snippets (Wren) provided inside the documentation and tutorials are licensed under the **MIT License**, allowing you to freely copy and use example code directly in your own projects without restriction.
 
-Copyright (c) 2026 Baptiste Guérin
+Copyright (c) 2026 Baptiste Guerin
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated code snippets, to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software.
