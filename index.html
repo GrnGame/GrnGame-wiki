@@ -10,16 +10,6 @@
 
   <style>
     :root {
-      --bg: #f6f7f9;
-      --sidebar: #f5f2f7;
-      --text: #000000;
-      --muted: #9aa4af;
-      --border: #464041;
-      --accent: #6ea8ff;
-      --code-bg: #f0f2f5;
-    }
-
-    :root[data-theme="dark"] {
       --bg: #1a1f29;
       --sidebar: #161a20;
       --text: #ffffff;
@@ -245,7 +235,6 @@
       <h1 id="title">GrnGame WIKI</h1>
     </a>
 
-    <button id="theme-toggle" aria-label="Change theme">🌙</button>
   </header>
 
   <nav id="menu"></nav>
@@ -257,32 +246,10 @@
   <script>
     const menu = document.querySelector("#menu");
     const content = document.querySelector("#content");
-    const themeButton = document.querySelector("#theme-toggle");
 
     let pages = [];
 
-    function applyTheme(theme) {
-      document.documentElement.dataset.theme = theme;
-      themeButton.textContent = theme === "dark" ? "☀️" : "🌙";
-      try { localStorage.setItem("theme", theme); } catch (e) {}
-    }
-
-    function getInitialTheme() {
-      let saved = null;
-      try { saved = localStorage.getItem("theme"); } catch (e) {}
-      if (saved) return saved;
-      return matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-    }
-
-    themeButton.onclick = () => {
-      const current = document.documentElement.dataset.theme;
-      applyTheme(current === "dark" ? "light" : "dark");
-    };
-
     document.querySelector("#burger").onclick = () => menu.classList.toggle("open");
-
-    applyTheme(getInitialTheme());
-
 
     function buildMenu(sections) {
       menu.innerHTML = sections.map(section => {
